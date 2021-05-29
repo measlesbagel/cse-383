@@ -1,0 +1,75 @@
+.div1 {
+border: 10px dashed blue;
+margin-top: 50px;
+margin-left: 550px;
+margin-right: 550px;
+}
+.div1 ul {
+list-style-position: outside;
+text-align: left;
+}
+.div1 li {
+color: blue;
+text-align: justify;
+padding-left: 30%;
+}
+.div1 h1 {
+color: red;
+text-decoration: underline;
+}
+.div1 h2{
+text-align: center;
+font-style: italic;
+}
+.div1 p{
+font-weight: bold;
+}
+
+.div3 {
+border: 5px double red;
+border-radius: 0px 15px;
+width: 30%;
+float: left;
+margin-left: 100px;
+margin-top: 20px;
+}
+.div3 iframe{
+height: 400px;
+width: 150px;
+margin-left: 75px;;
+}
+.div3 img{
+height: 150px;
+width: 200px;
+}
+.div3 p{
+text-decoration: underline;
+text-align: center;
+}
+.div3 h1{
+text-decoration: overline;
+color: blue;
+text-align: center;
+}
+.div3 h2{
+font-size: 300%;
+font-weight: bold;
+text-align: center;
+}
+
+.div2 {
+border: 10px solid;
+border-color: darkgreen yellowgreen yellowgreen darkgreen;
+width: 40%;
+border-radius: 25px;
+float: right;
+text-align: center;
+margin-right: 100px;
+margin-top: 20px;
+}
+.div2 h1{
+text-align: left;
+text-decoration: underline;
+color: green;
+padding-left: 50px;
+}

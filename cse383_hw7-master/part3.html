@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HW7: JavaScript Part 2</title>
+  </head>
+
+  <body>
+
+
+    <script language="JavaScript">
+      const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      const height = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
+
+      function createDivs() {
+        for(let i = 1; i < 4; i++) {
+          var div = document.createElement("div");
+          div.id = "DIV" + i;
+          div.style.width = "150px";
+          div.style.height = "150px";
+          div.style.position = "absolute";
+          div.style.left = Math.floor(Math.random() * (width - 150))+ "pt";
+          div.style.top = Math.floor(Math.random() * (height - 150))+ "pt";
+
+          document.body.appendChild(div);
+          document.getElementById(div.id).innerHTML = "<h1>DIV " + i + " </h1>";
+        }
+      }
+
+      createDivs()
+      var counter = 0;
+
+      function moveDiv(divId, x, y) {
+        var obj = document.getElementById(divId);
+        var currentXPosition = parseInt(obj.style.left);
+        var currentYPosition = parseInt(obj.style.top);
+
+        if(x) {
+          obj.style.left = currentXPosition + 1 + "pt";
+        }
+
+        if(y) {
+          obj.style.top = currentYPosition + 1 + "pt";
+        }
+
+        counter++;
+        obj.innerHTML = "<h1> " + divId + "  " + counter + "</h1>";
+
+      }
+
+      function start() {
+        setInterval(function() {moveDiv("DIV1", true, false);}, 150)
+        setInterval(function() {moveDiv("DIV2",  false, true);}, 150)
+        setInterval(function() {moveDiv("DIV3",  true, true);}, 150)
+      }
+
+      start()
+
+    </script>
+
+  </body>
+
+</html>

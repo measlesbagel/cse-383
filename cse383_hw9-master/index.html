@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="author" content="none" charset="UTF-8">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<style>
+			#container {
+				display: block;
+			}
+
+			#squares {
+				width: 100%;
+				float: left;
+			}
+
+			#Toggle {
+				width: 100%;
+				float: left;
+				margin-top: 20px;
+			}
+
+			#info {
+				margin-top: 10px;
+				float: left;
+			}
+
+			.square {
+				width: 50px;
+				height: 50px;
+				float: left;
+			}
+
+			.outlined {
+				border: 1px solid;
+				border-color: black;
+			}
+
+			.round-edge {
+				border-radius: 15px;
+			}
+
+			.miami {
+				background-color: #C3142D;
+			}
+		</style>
+		<script>
+			var OUTPUT="";
+
+			function PRINT_CHILD(object,level){
+				ADD_OUTPUT(object, level, false);
+
+				if(object.hasChildNodes()) {
+					object = object.firstChild;
+					level += 1;
+				} else if (object.nextSibling != null) {
+					ADD_OUTPUT(object, level, true);
+					object = object.nextSibling;
+				} else {
+					object = object.parentNode;
+					level -= 1;
+					ADD_OUTPUT(object, level, true);
+
+					if(object.id == "main") {
+						return $("#output").append(OUTPUT);
+					}
+					
+					object = object.nextSibling;
+				}
+
+				if(object != null) {
+					PRINT_CHILD(object, level);
+				} else {
+					$("#output").append(OUTPUT);
+				}
+			}
+
+			function ADD_OUTPUT(object, level, end) {
+				if(object.nodeType == 1 ) {
+					var text = "";
+					for(let i = 0; i < level; i++) {
+						text += "   ";
+					}
+
+					if(end) {
+						text += "/";
+					}
+
+					text += object.nodeName + "\n";
+					OUTPUT += text;
+					console.log(text);
+				}
+			}
+
+			$(document).ready(function() {
+				PRINT_CHILD($("#main").get(0),0);
+
+				$(".square").addClass("outlined");
+
+				$("#buttonToggleColors").click(function() {
+					/* Your code goes here for Step 2 */
+					$(".square").toggleClass("miami");
+				});
+
+				$("#buttonToggleRoundborders").click(function() {
+					/* Your code goes here for Step 3*/
+					$(".square").toggleClass("round-edge");
+
+				});
+
+					/* Your code goes here for Step 4 */
+				$("#buttonAddBox").click(function() {
+					$("#squares").append("<div class='square outlined'></div>");
+
+				});
+
+			});
+
+		</script>
+	</head>
+	<body>
+
+		<div class="container" id="main">
+
+			<div id="squares">
+				<!-- Step 1: Add the 'outlined' class to each of the squares using JQuery -->
+				<div id="square1" class="square"></div>
+				<div id="square2" class="square"></div>
+				<div id="square3" class="square"></div>
+			</div>
+
+			<div id="Toggle">
+				<h2>Toggles</h2>
+				<button id="buttonToggleColors" class="btn btn-primary">Toggle Colors</button>
+				<button id="buttonToggleRoundborders" class="btn btn-secondary">Toggle Rounded Borders</button>
+				<button id="buttonAddBox" class="btn btn-Success">Add a New Box</button>
+			</div>
+
+			<div id="info">
+				<h2>Descriptions:</h2>
+				<ul>
+					<li><b>#1: Update the square divs</b> to include the outline class using JQuery (do NOT HARD CODE IT)</li>
+					<li><b>#2: Toggle Colors</b>: Toggles the color on and off for each square using CSS classes.</li>
+					<li><b>#3: Toggle Rounded Borders</b>: Toggles the rounded-borders on and off for each square using CSS attributes.</li>
+					<li><b>#4: Add a New Box</b>: Adds one new square to the container.</li>
+				</ul>
+			</div>
+		</div>
+		<h2>Layout of div "main"</h2>
+		<pre> <div id="output"></div> </pre>
+	</body>
+</html>

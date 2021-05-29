@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HW7: JavaScript Part 2</title>
+  </head>
+
+  <body>
+
+
+    <script language="JavaScript">
+      var canvas = document.createElement("canvas");
+      canvas.id = "myCanvas";
+      canvas.height = window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight;
+      canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      document.body.appendChild(canvas);
+
+      function drawTriangle() {
+        var x = Math.floor(Math.random() * 115) + 10;
+        var y = Math.floor(Math.random() * 115) + 10;
+        var xPosition = Math.floor(Math.random() * canvas.width-x) + x;
+        var yPosition = Math.floor(Math.random() * canvas.height-y) + y;
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+
+        var c = document.getElementById("myCanvas");
+        var context = c.getContext("2d");
+        context.beginPath();
+        context.moveTo(xPosition,yPosition);
+        context.lineTo(xPosition-x,yPosition);
+        context.lineTo(xPosition-x,yPosition-y);
+        context.fillStyle = "#" + randomColor;
+        context.fill();
+      }
+
+      for(let i = 0; i < 20; i++) {
+        drawTriangle();
+      }
+    </script>
+
+  </body>
+
+</html>

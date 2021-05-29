@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<!--
+Myles Cagle
+Date: 10/30/2020
+Course: CSE383
+Assignment HW10
+//-->
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>HW 10: AJAX</title>
+
+	  <script src="https://code.jquery.com/jquery-3.4.1.min.js"               integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="               crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	  <script src="hw10.js"></script>
+
+  </head>
+
+	<body>
+    <div class="container-fluid">
+
+    	<div id="form" class="col-sm-4 offset-sm-4 form-group" style="top:10px" onsubmit="return false;">
+    		<form>
+          <div class="input-group input-group-lg">
+            <input type="text" id="title" name="title" class="form-control" placeholder="Enter Book Title Here...">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" onclick="createList()" id="search-button">Search</button>
+            </div>
+          </div>
+    		</form>
+    	</div>
+
+    	<div id="results" class="col-sm-4 offset-sm-4 text-center" style="top:10px;">
+    	  <h1 class="display-3 text-center font-weight-bold">Search Results</h1>
+        <p class="text-info">Click Book Titles to See Cover Image</p>
+        <div class="list-group" id="book-list">
+
+        </div>
+    	</div>
+
+    	<div id="coverImage" class="col-sm-2" style="right:25px; top:25px; height:500px; width:200px; position:absolute; visibility:hidden; text-align:center; border: thick solid blue">
+      	<h2 id="coverTitle"></h2><br>
+      	<h3 id="noImage">No Cover Image</h3><br>
+      	<img class="mx-auto d-block img-thumbnail">
+    	</div>
+
+    </div>
+
+	</body>
+</html>
